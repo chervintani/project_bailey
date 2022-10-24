@@ -103,21 +103,21 @@ class _PersonalInformationState extends State<PersonalInformation> {
                 label: 'Birthday',
                 readOnly: true,
                 controller: dateInput,
-                onTap: () async {
-                  DateTime? pickedDate = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(1900),
-                      lastDate: DateTime.now());
+                // onTap: () async {
+                //   DateTime? pickedDate = await showDatePicker(
+                //       context: context,
+                //       initialDate: DateTime.now(),
+                //       firstDate: DateTime(1900),
+                //       lastDate: DateTime.now());
 
-                  if (pickedDate != null) {
-                    String formattedDate =
-                        DateFormat('yMMMMd').format(pickedDate);
-                    return setState(() {
-                      dateInput.text = formattedDate;
-                    });
-                  }
-                },
+                //   if (pickedDate != null) {
+                //     String formattedDate =
+                //         DateFormat('yMMMMd').format(pickedDate);
+                //     return setState(() {
+                //       dateInput.text = formattedDate;
+                //     });
+                //   }
+                // },
                 inputDecoration: InputDecoration(
                   hintText: 'Birthday',
                   suffixIcon: const Icon(Icons.calendar_month),
@@ -133,47 +133,47 @@ class _PersonalInformationState extends State<PersonalInformation> {
                 label: 'Address',
                 controller: province,
                 readOnly: true,
-                onTap: () => {
-                  showModalBottomSheet(
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    builder: (BuildContext context) {
-                      return Container(
-                        height: 330,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(30)),
-                        child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.center,
-                          // mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 20),
-                              child: Center(
-                                child: Text(
-                                  'Province',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 17,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: ListView(
-                                scrollDirection: Axis.vertical,
-                                shrinkWrap: true,
-                                children: [...provinces],
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    },
-                  )
-                },
+                // onTap: () => {
+                //   showModalBottomSheet(
+                //     context: context,
+                //     shape: RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.circular(30),
+                //     ),
+                //     builder: (BuildContext context) {
+                //       return Container(
+                //         height: 330,
+                //         decoration: BoxDecoration(
+                //             color: Colors.white,
+                //             borderRadius: BorderRadius.circular(30)),
+                //         child: Column(
+                //           // mainAxisAlignment: MainAxisAlignment.center,
+                //           // mainAxisSize: MainAxisSize.min,
+                //           children: [
+                //             const Padding(
+                //               padding: EdgeInsets.symmetric(vertical: 20),
+                //               child: Center(
+                //                 child: Text(
+                //                   'Province',
+                //                   style: TextStyle(
+                //                     fontWeight: FontWeight.bold,
+                //                     fontSize: 17,
+                //                   ),
+                //                 ),
+                //               ),
+                //             ),
+                //             Expanded(
+                //               child: ListView(
+                //                 scrollDirection: Axis.vertical,
+                //                 shrinkWrap: true,
+                //                 children: [...provinces],
+                //               ),
+                //             )
+                //           ],
+                //         ),
+                //       );
+                //     },
+                //   )
+                // },
                 inputDecoration: InputDecoration(
                   hintText: 'Address',
                   suffixIcon: const Icon(Icons.arrow_drop_down),

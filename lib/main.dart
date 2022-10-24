@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:project_bailey/pages/counter/counter.dart';
+import 'package:project_bailey/pages/country/bloc/country_state/country_state.dart';
+import 'package:project_bailey/pages/country/country.dart';
 import 'package:project_bailey/pages/login/login.dart';
 
 void main() {
@@ -21,6 +23,14 @@ final GoRouter _router = GoRouter(
       path: '/counter',
       builder: (context, state) {
         return const CounterPage();
+      },
+    ),
+    GoRoute(
+      path: CountryPage.route,
+      builder: (context, state) {
+        return CountryPage(
+          countryState: state.extra as CountryState,
+        );
       },
     ),
   ],

@@ -4,8 +4,7 @@ class LabeledTextField extends StatelessWidget {
   final String label;
   final InputDecoration? inputDecoration;
   final bool? obscureText;
-  final bool? removePadding;
-  final void Function()? onTap;
+  final ValueChanged<String>? onChanged;
   final bool? readOnly;
   final TextEditingController? controller;
 
@@ -14,8 +13,7 @@ class LabeledTextField extends StatelessWidget {
     required this.label,
     this.inputDecoration,
     this.obscureText,
-    this.removePadding,
-    this.onTap,
+    this.onChanged,
     this.readOnly,
     this.controller,
   });
@@ -35,7 +33,7 @@ class LabeledTextField extends StatelessWidget {
         TextFormField(
           obscureText: obscureText ?? false,
           decoration: inputDecoration,
-          onTap: onTap,
+          onChanged: onChanged,
           readOnly: readOnly ?? false,
           controller: controller,
         )

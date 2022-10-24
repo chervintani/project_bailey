@@ -30,7 +30,7 @@ class Delegate extends SliverPersistentHeaderDelegate {
       child: Center(
         child: Text(
           _title,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 25,
           ),
