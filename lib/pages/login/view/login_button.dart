@@ -14,7 +14,9 @@ class LoginButton extends StatelessWidget {
   VoidCallback? _onPressed(BuildContext context, LoginState state) {
     var bloc = context.read<LoginBloc>();
     if (state.email.errorType == ErrorType.none &&
-        state.password.errorType == ErrorType.none) {
+        state.email.value.isNotEmpty &&
+        state.password.errorType == ErrorType.none &&
+        state.password.value.isNotEmpty) {
       return () => bloc.add(LoginButtonPressed());
     } else {
       return null;

@@ -5,8 +5,15 @@ import 'package:project_bailey/widgets/labeled_textfield.dart';
 
 import '../../../models/text_field_input/text_field_input.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  bool hidePassword = true;
 
   String? _emailError(LoginState state) {
     switch (state.email.errorType) {
@@ -20,6 +27,7 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var bloc = context.read<LoginBloc>();
+
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         return SizedBox(
@@ -41,11 +49,19 @@ class LoginForm extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 15),
                 child: LabeledTextField(
                   label: 'Password',
+                  obscureText: hidePassword,
                   onChanged: (value) => bloc.add(LoginPasswordChanged(value)),
                   inputDecoration: InputDecoration(
                     hintText: 'Password',
                     prefixIcon: const Icon(Icons.lock),
-                    suffixIcon: const Icon(Icons.visibility_off),
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.visibility_off),
+                      onPressed: () {
+                        setState(() {
+                          hidePassword = !hidePassword;
+                        });
+                      },
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),

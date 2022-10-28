@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LoginState {
   TextFieldInput get email => throw _privateConstructorUsedError;
   TextFieldInput get password => throw _privateConstructorUsedError;
+  LoggedUser get loggedUser => throw _privateConstructorUsedError;
   RequestStatus get loginStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,10 +35,12 @@ abstract class $LoginStateCopyWith<$Res> {
   $Res call(
       {TextFieldInput email,
       TextFieldInput password,
+      LoggedUser loggedUser,
       RequestStatus loginStatus});
 
   $TextFieldInputCopyWith<$Res> get email;
   $TextFieldInputCopyWith<$Res> get password;
+  $LoggedUserCopyWith<$Res> get loggedUser;
 }
 
 /// @nodoc
@@ -55,6 +58,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? loggedUser = null,
     Object? loginStatus = null,
   }) {
     return _then(_value.copyWith(
@@ -66,6 +70,10 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as TextFieldInput,
+      loggedUser: null == loggedUser
+          ? _value.loggedUser
+          : loggedUser // ignore: cast_nullable_to_non_nullable
+              as LoggedUser,
       loginStatus: null == loginStatus
           ? _value.loginStatus
           : loginStatus // ignore: cast_nullable_to_non_nullable
@@ -88,6 +96,14 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
       return _then(_value.copyWith(password: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LoggedUserCopyWith<$Res> get loggedUser {
+    return $LoggedUserCopyWith<$Res>(_value.loggedUser, (value) {
+      return _then(_value.copyWith(loggedUser: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -101,12 +117,15 @@ abstract class _$$_LoginStateCopyWith<$Res>
   $Res call(
       {TextFieldInput email,
       TextFieldInput password,
+      LoggedUser loggedUser,
       RequestStatus loginStatus});
 
   @override
   $TextFieldInputCopyWith<$Res> get email;
   @override
   $TextFieldInputCopyWith<$Res> get password;
+  @override
+  $LoggedUserCopyWith<$Res> get loggedUser;
 }
 
 /// @nodoc
@@ -122,6 +141,7 @@ class __$$_LoginStateCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? loggedUser = null,
     Object? loginStatus = null,
   }) {
     return _then(_$_LoginState(
@@ -133,6 +153,10 @@ class __$$_LoginStateCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as TextFieldInput,
+      loggedUser: null == loggedUser
+          ? _value.loggedUser
+          : loggedUser // ignore: cast_nullable_to_non_nullable
+              as LoggedUser,
       loginStatus: null == loginStatus
           ? _value.loginStatus
           : loginStatus // ignore: cast_nullable_to_non_nullable
@@ -147,6 +171,7 @@ class _$_LoginState implements _LoginState {
   const _$_LoginState(
       {this.email = const TextFieldInput(),
       this.password = const TextFieldInput(),
+      this.loggedUser = const LoggedUser(),
       this.loginStatus = RequestStatus.waiting});
 
   @override
@@ -157,11 +182,14 @@ class _$_LoginState implements _LoginState {
   final TextFieldInput password;
   @override
   @JsonKey()
+  final LoggedUser loggedUser;
+  @override
+  @JsonKey()
   final RequestStatus loginStatus;
 
   @override
   String toString() {
-    return 'LoginState(email: $email, password: $password, loginStatus: $loginStatus)';
+    return 'LoginState(email: $email, password: $password, loggedUser: $loggedUser, loginStatus: $loginStatus)';
   }
 
   @override
@@ -172,12 +200,15 @@ class _$_LoginState implements _LoginState {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
+            (identical(other.loggedUser, loggedUser) ||
+                other.loggedUser == loggedUser) &&
             (identical(other.loginStatus, loginStatus) ||
                 other.loginStatus == loginStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, loginStatus);
+  int get hashCode =>
+      Object.hash(runtimeType, email, password, loggedUser, loginStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -190,12 +221,15 @@ abstract class _LoginState implements LoginState {
   const factory _LoginState(
       {final TextFieldInput email,
       final TextFieldInput password,
+      final LoggedUser loggedUser,
       final RequestStatus loginStatus}) = _$_LoginState;
 
   @override
   TextFieldInput get email;
   @override
   TextFieldInput get password;
+  @override
+  LoggedUser get loggedUser;
   @override
   RequestStatus get loginStatus;
   @override

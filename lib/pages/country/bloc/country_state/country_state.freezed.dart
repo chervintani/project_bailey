@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CountryState {
   String get title => throw _privateConstructorUsedError;
+  List<Country> get countries => throw _privateConstructorUsedError;
+  RequestStatus get fetchCountriesStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CountryStateCopyWith<CountryState> get copyWith =>
@@ -29,7 +31,10 @@ abstract class $CountryStateCopyWith<$Res> {
           CountryState value, $Res Function(CountryState) then) =
       _$CountryStateCopyWithImpl<$Res, CountryState>;
   @useResult
-  $Res call({String title});
+  $Res call(
+      {String title,
+      List<Country> countries,
+      RequestStatus fetchCountriesStatus});
 }
 
 /// @nodoc
@@ -46,12 +51,22 @@ class _$CountryStateCopyWithImpl<$Res, $Val extends CountryState>
   @override
   $Res call({
     Object? title = null,
+    Object? countries = null,
+    Object? fetchCountriesStatus = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      countries: null == countries
+          ? _value.countries
+          : countries // ignore: cast_nullable_to_non_nullable
+              as List<Country>,
+      fetchCountriesStatus: null == fetchCountriesStatus
+          ? _value.fetchCountriesStatus
+          : fetchCountriesStatus // ignore: cast_nullable_to_non_nullable
+              as RequestStatus,
     ) as $Val);
   }
 }
@@ -64,7 +79,10 @@ abstract class _$$_CountryStateCopyWith<$Res>
       __$$_CountryStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title});
+  $Res call(
+      {String title,
+      List<Country> countries,
+      RequestStatus fetchCountriesStatus});
 }
 
 /// @nodoc
@@ -79,12 +97,22 @@ class __$$_CountryStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
+    Object? countries = null,
+    Object? fetchCountriesStatus = null,
   }) {
     return _then(_$_CountryState(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      countries: null == countries
+          ? _value._countries
+          : countries // ignore: cast_nullable_to_non_nullable
+              as List<Country>,
+      fetchCountriesStatus: null == fetchCountriesStatus
+          ? _value.fetchCountriesStatus
+          : fetchCountriesStatus // ignore: cast_nullable_to_non_nullable
+              as RequestStatus,
     ));
   }
 }
@@ -92,15 +120,30 @@ class __$$_CountryStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CountryState implements _CountryState {
-  const _$_CountryState({this.title = ''});
+  const _$_CountryState(
+      {this.title = '',
+      final List<Country> countries = const [],
+      this.fetchCountriesStatus = RequestStatus.waiting})
+      : _countries = countries;
 
   @override
   @JsonKey()
   final String title;
+  final List<Country> _countries;
+  @override
+  @JsonKey()
+  List<Country> get countries {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_countries);
+  }
+
+  @override
+  @JsonKey()
+  final RequestStatus fetchCountriesStatus;
 
   @override
   String toString() {
-    return 'CountryState(title: $title)';
+    return 'CountryState(title: $title, countries: $countries, fetchCountriesStatus: $fetchCountriesStatus)';
   }
 
   @override
@@ -108,11 +151,16 @@ class _$_CountryState implements _CountryState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CountryState &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.title, title) || other.title == title) &&
+            const DeepCollectionEquality()
+                .equals(other._countries, _countries) &&
+            (identical(other.fetchCountriesStatus, fetchCountriesStatus) ||
+                other.fetchCountriesStatus == fetchCountriesStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title);
+  int get hashCode => Object.hash(runtimeType, title,
+      const DeepCollectionEquality().hash(_countries), fetchCountriesStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -122,10 +170,17 @@ class _$_CountryState implements _CountryState {
 }
 
 abstract class _CountryState implements CountryState {
-  const factory _CountryState({final String title}) = _$_CountryState;
+  const factory _CountryState(
+      {final String title,
+      final List<Country> countries,
+      final RequestStatus fetchCountriesStatus}) = _$_CountryState;
 
   @override
   String get title;
+  @override
+  List<Country> get countries;
+  @override
+  RequestStatus get fetchCountriesStatus;
   @override
   @JsonKey(ignore: true)
   _$$_CountryStateCopyWith<_$_CountryState> get copyWith =>
